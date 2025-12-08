@@ -1,0 +1,42 @@
+setcpm(140/4)
+
+const kick = s("bd!8:1").slow(2).crush(9)
+const snare = s("sd:1 - - sd:4").noise()
+const hihat = s("hh!8:2").orbit(2).gain(.6)
+
+
+$: stack(kick, snare, hihat).gain(0.8, .2)._scope()
+
+$: note("e4 e3!3 c3!2 d4 a3")
+.s("sawtooth").lpf(8000)
+.orbit(.2)
+._pianoroll()
+
+$: note("d3@0.5 f3@0.25 e4@0.25 e3@0.5 d2@0.25 d3@0.25")
+.s("gm_lead_8_bass_lead:4")
+.gain(.7)
+.orbit(2)
+.trans(-12)
+.room(.8)
+._pianoroll()
+
+$: note("c3 e4 e5 g4 c3!2 f4 g4")
+.s("gm_overdriven_guitar:6")
+.gain(0.6)
+._pianoroll()
+
+$: note("<[d5 a4 a#5 d6] [[d3 a4 a#5 f6] [e5 f5 a#5 e6]]*2>")
+.s("pulse").lpf(8000, 4000)
+.trans(-12)
+.orbit(2)
+.distort(0.5)
+.crush(8)
+.gain(.9)
+.room(.8)
+.rsize(6)
+._pianoroll()
+
+$: note("b1!8")
+.s("sqr")
+.gain(0.2)
+._pianoroll()
